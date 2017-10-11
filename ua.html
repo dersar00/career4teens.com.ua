@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Title -->
+    <title>Кар'єра для підлітків</title>
+
+    <!-- Favicon Ico -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <!-- =============================
+                stylesheets
+    ================================== -->
+
+    <!-- Normalize And Bootstrap -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Google Font  -->
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:600,700,400,300' rel='stylesheet' type='text/css'>
+
+    <!-- Font Icons -->
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css" />
+
+    <!-- Plugin Default Stylesheets -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/slider-pro.css">
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/owl.theme.css">
+    <link rel="stylesheet" href="css/owl.transitions.css">
+    <link rel="stylesheet" href="css/animate.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/color.css" id="colors" />
+
+  <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter44872117 = new Ya.Metrika({
+                    id:44872117,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true,
+                    webvisor:true
+                });
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+            s = d.createElement("script"),
+            f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/44872117" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+        $(document).ready (function() {
+            $("#submit-btn").click (function() {
+                $("#messageShow").hide ();
+                var name = $("#name").val();
+                var phone = $("#phone").val();
+                var email= $("#email").val();
+                var message = $("#message").val();
+                var fail = "";
+                if(name.length < 3 ) fail = "Введіть правильне ім'я!";
+                else if(phone.length < 7)
+                    fail = "Введіть справжній номер телефону!";
+                else if(email.split ('@').length - 1 == 0 || email.split ('.').length - 1 ==0)
+                    fail = "Ви ввели неправильний email!";
+                else if (message.length < 20)
+                    fail = "Повідомлення повинно містити не менше 20 символів!";
+                if (fail !=""){
+                    $("#messageShow").html (fail)
+                    $("#messageShow").show ();
+                    return false;
+                    }
+                    $.ajax({
+                        url: 'ajax/feedback.php',
+                        type: 'POST',
+                        cache: false,
+                        data: {'name': name, 'phone': phone, 'email': email, 'message': message},
+                        dataType: 'html',
+                        success: function(data){
+                                $("#contact").css("display", "none");
+                                $("#thx").css("display", "block");
+                        }
+                    });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="status"></div>
+    </div>
+
+    <!-- =============================
+                    Header
+    ================================== -->
+    <header>
+        <!-- Navigation Menu start-->
+        <nav class="navbar lor-main-menu" role="navigation">
+            <div class="container">
+
+                <!-- Navbar Toggle -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <!-- Logo -->
+                    <a class="navbar-brand" href="index.html"><img class="logo" id="logo" src="images/logo1.png" alt="logo"></a>
+
+                </div>
+                <!-- Navbar Toggle End -->
+
+                <!-- navbar-collapse start-->
+                <div id="nav-menu" class="navbar-collapse collapse" role="navigation">
+                    <ul class="nav navbar-nav lor-menu-wrapper">
+                        <li class="active">
+                            <a href="#lor-slider">Головна</a>
+                        </li>
+                        <li>
+                            <a href="#calendar">Програма</a>
+                        </li>
+                        <li>
+                            <a href="#couch">Про автора</a>
+                        </li>
+                        <li>
+                            <a href="#contact">Контакти</a>
+                        </li>
+                        <li>
+                            <a id="lng" href="#">UA</a>
+                        </li>
+                        <li>
+                            <a id="lng" href="index.html">RU</a>
+                        </li>'
+                        <li>
+                            <a id="fblogo" href="https://www.facebook.com/sharer.php?u=http://career4teens.com.ua"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- navbar-collapse end-->
+
+            </div>
+        </nav>
+        <!-- Navigation Menu end-->
+    </header>
+    <!-- Header End -->
+
+
+    <!-- =============================
+                Main Slider
+    ================================== -->
+    <section class="slider-pro lor-slider" id="lor-slider">
+        <div class="sp-slides">
+
+            <!-- Slides -->
+            <div class="sp-slide lor-main-slides">
+                <div class="lor-img-overlay"></div>
+
+                <img class="sp-image" src="images/img-header/slider-img-1.jpg" alt="Slider 1"/>
+
+                <h1  class="sp-layer lor-slider-text-big"
+                data-position="center" data-show-transition="left" data-hide-transition="right" data-show-delay="1500" data-hide-delay="200">
+                КАР'ЄРА ДЛЯ ПІДЛІТКІВ
+                </h1>
+
+                <p id="first_text" class="header_text sp-layer centered "
+                data-position="center" data-vertical="15%" data-show-delay="2000" data-hide-delay="200" data-show-transition="left" data-hide-transition="right">
+                    <span class="lor-highlight-text"></span>зі Світланою Бочківською
+                </p>
+            </div>
+            <!-- Slides End -->
+
+            <!-- Slides -->
+            <div class="sp-slide lor-main-slides">
+            <div class="lor-img-overlay"></div>
+                <img class="sp-image" src="images/img-header/slider-img-2.jpg" alt="Slider 2"/>
+
+                <h1  class="sp-layer lor-slider-text-big"
+                 data-position="center" data-show-transition="left" data-hide-transition="right" data-show-delay="1500" data-hide-delay="200">
+                    АВТОРСЬКА ПРОГРАМА
+                </h1>
+
+                <p id="second_text" class="header_text sp-layer centered"
+                 data-position="center" data-vertical="15%" data-show-delay="2000" data-hide-delay="200" data-show-transition="left" data-hide-transition="right">
+                    <span class="lor-highlight-text"></span>ПОБУДОВИ КАР'ЄРИ, ВИХОДЯЧИ<br> З МОЖЛИВОСТЕЙ, ПОТЕНЦІАЛУ І ТАЛАНТІВ ПІДЛІТКА
+                </p>
+            </div>
+            <!-- Slides End -->
+
+            <!-- Slides -->
+            <div class="sp-slide lor-main-slides">
+                <div class="lor-img-overlay"></div>
+
+                <img class="sp-image" src="images/img-header/slider-img-3.jpg" alt="Slider 3"/>
+
+                <h1  class="sp-layer lor-slider-text-big"
+                data-position="center" data-show-transition="left" data-hide-transition="right" data-show-delay="1000" data-hide-delay="200">
+                    КУРС ПРОФЕСІЙНОГО РОЗВИТКУ
+                </h1>
+
+                <p id="third_text" class="header_text sp-layer centered "
+                data-position="center" data-vertical="15%" data-show-delay="2000" data-hide-delay="200" data-show-transition="left" data-hide-transition="right">
+                   <span class="lor-highlight-text"></span>ЦЕ - ВПЕВНЕНЕ МАЙБУТНЄ ВАШОЇ ДИТИНИ
+                </p>
+
+            </div>
+            <!-- Slides End -->
+
+        </div>
+    </section>
+    <!-- Main Slider End -->
+
+    <!-- =============================
+                Custom Section
+    ================================== -->
+    <section id="screenshot" class="bgc-one lor-custom-sec lor-section-wrapper lor-description">
+        <div class="container">
+            <div class="row">
+                <!-- Section Header -->
+                <div class="col-md-12 col-sm-12 col-xs-12 lor-section-header wow fadeInDown">
+                    <h2><span class="lor-highlight-text">Проблема професійного самовизначення</span> в 90% випадків - це неусвідомлений вибір професії.</h2>
+                    <h4>І найбільші помилки в виборі професії відбуваються на етапі постановки мети, коли людина не знає про себе. Як підсумок , обмежений набір знань, відсутність навичок освоєння і комбінації професій - відсікає величезні можливості професійного і кар'єрного зростання. <br><b>Шлях куди-небудь - це шлях в нікуди!  І як наслідок, підліток:
+
+</h4>
+                    <div class="lor-section-divider"></div>
+                    
+                </div>
+                <!-- Section Header End -->
+
+                <div class="col-md-6 col-sm-6 col-xs-12 lor-custom-sec-img wow bounceInRight">
+                    <img src="images/motivation.jpg" alt="Custom Image">
+                </div>
+
+                <div class="col-md-6 col-sm-6 col-xs-12 lor-custom-sec-text wow bounceInLeft">
+                   <ul style="font-size: 20px">
+                    <li><span>• </span>Не розуміє, навіщо вчитися</li>
+                    <li><span>• </span>Зазнає труднощів з концентрацією уваги</li>
+                    <li><span>• </span>Не хоче нічого робити</li>
+                    <li><span>• </span>Не готовий брати на себе відповідальність за вибір майбутньої професії, обмежуючись тим, аби був диплом  або, що ще гірше, «куди візьмуть»</li>
+                    <li><span>• </span>Вибирає віртуальне спілкування, комп'ютерні ігри замість спілкування один на один</li>
+                </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="screenshot1" class="bgc-one lor-custom-sec lor-section-wrapper lor-description">
+        <div class="container">
+            <div class="row">
+                <!-- Section Header -->
+                <div class="col-md-12 col-sm-12 col-xs-12 lor-section-header wow fadeInDown">
+                    <h2><span class="lor-highlight-text">Практичний Курс професійного самовизначення
+</span> створений виходячи з реального досвіду.</h2>
+                    <div class="lor-section-divider"></div>
+                </div>
+                <!-- Section Header End -->
+
+                <div class="col-md-6 col-sm-6 col-xs-12 lor-custom-sec-text wow bounceInRight">
+                <p style="font-size: 18px">Як практик, я бачу, наскільки сьогоднішнє ставлення до навчання і освіти в цілому формує майбутнє ставлення до роботодавця, в частині обов'язків, відповідальності за їх виконання, зосередження уваги, вирішення складних завдань і т.д. І як лояльність до школи впливає на лояльність до майбутньої компанії. Це взаємопов'язані речі. І для того, щоб змінити ставлення підлітків до свого майбутнього, до вибору освіти і професії, мною був створений практичний Курс <span class="lor-highlight-text">«Моя майбутня кар'єра»</span>. <br>Курс унікальний ще тим, що крім визначення орієнтиру майбутньої професії, діти отримують колосальну підтримку в особистісному становленні та зростанні, адже без розуміння "Хто я?", "У чому мій талант і унікальність", неможливо зрозуміти своє професійне призначення, розкрити свій потенціал і побудувати успішну кар'єру. В цьому і є суть Курсу "Моя майбутня кар'єра". В цьому і є його цінність.
+</p>
+                </div>
+
+                <div class="col-md-6 col-sm-6 col-xs-12 lor-custom-sec-img wow bounceInLeft">
+                    <img src="images/course.jpg" alt="Custom Image">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Custom Section End -->
+
+
+   
+
+        <!-- =============================
+                    About Section
+    ================================== -->
+    <section id="about" class="bgc-one lor-section-wrapper">
+        <div class="container">
+            <div class="row">
+
+                <!-- Section Header -->
+                <div class="col-md-12 col-sm-12 col-xs-12 lor-section-header wow fadeInDown">
+                    <h2><span class="lor-highlight-text">Для кого?</span></h2>
+                    <div class="lor-section-divider"></div>
+                    <p style="font-size: 20px" class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Програма розрахована для тих, хто хоче:</p>
+                </div>
+                <!-- Section Header End -->
+
+                <!-- What We Do -->
+                <div class="lor-what-we-do">
+
+                    <div class="col-md-3 col-sm-3 col-xs-12 lor-blurb-round-icon wow bounceInLeft">
+                        <div class="lor-icon">
+                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                        </div>
+                        <h3>Визначитися у виборі професії та цілями на майбутнє</h3>
+                       
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 col-xs-12 lor-blurb-round-icon wow bounceInLeft" data-wow-delay=".5s">
+                        <div class="lor-icon">
+                           <i class="fa fa-leanpub" aria-hidden="true"></i>
+                        </div>
+                        <h3>Знайти мотивацію до навчання</h3>
+                        
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 col-xs-12 lor-blurb-round-icon wow bounceInRight" data-wow-delay=".5s">
+                        <div class="lor-icon">
+                           <i class="fa fa-sitemap" aria-hidden="true"></i>
+                        </div>
+                        <h3>Стати більш ефективним і організованим</h3>
+                    </div>
+
+                    <div class="col-md-3 col-sm-3 col-xs-12 lor-blurb-round-icon wow bounceInRight" data-wow-delay=".5s">
+                        <div class="lor-icon">
+                           <i class="fa fa-check-square-o" aria-hidden="true"></i>
+                        </div>
+                        <h3>Робити усвідомлений вибір і приймати відповідальність за прийняті рішення</h3>
+                     
+                    </div>
+
+                </div>
+                <!-- What We Do End -->
+
+            </div>
+            <div class="row after_for">
+                <div class="col-lg-4 col-sm-4 col-xs-12 centered">
+                 <div class="around_top wow fadeIn">
+                    <h4 class="around">8 блоків</h4>
+                    </div>
+                    <h4 class="around_down wow fadeInDown">Теорія, практичні вправи, проф.тестування, домашні завдання</h4>
+                </div>
+                 <div class="col-lg-4 col-sm-4 col-xs-12 centered">
+                 <div class="around_top wow fadeIn">
+                    <h4 class="around">24 години</h4>
+                    </div>
+                    <h4 class="wow fadeInDown">1-2 рази на тиждень.<br>Між зустрічами, домашні завдання та он-лайн підтримка від автора та тренера Курсу</h4>
+                </div>
+                <div class="col-lg-4 col-sm-4 col-xs-12 centered">
+                <div class="around_top wow fadeIn">
+                    <h4 class="around">Інформаційні матеріали</h4>  
+                    </div>
+                    <h4 class="wow fadeInDown">Робочі зошити, корисні посилання і рекомендації</h4>
+                </div>
+            </div>
+            <div style="padding-top: 30px" class="row wow bounceInRight"><h4 style="color: #616161"><span class="lor-highlight-text">БОНУС!</span> У день завершення курсу, зустріч з батьками, де у вас є прекрасна можливість задати питання тренеру і отримати відповіді на найактуальніші питання.</h4></div>
+        </div>
+    </section>
+    <!-- About Section End -->
+
+
+     <!-- =============================
+                Featured Work Section
+    ================================== -->
+    <section id="featured-works" class="bgc-two lor-section-wrapper lor-section-work">
+        <!-- Container -->
+        <div class="container">
+            <div class="row">
+
+                <!-- Section Header -->
+                <div class="col-md-12 col-sm-12 col-xs-12 lor-section-header wow fadeInDown">
+                    <h2>НАШ <span class="lor-highlight-text">РОБОЧИЙ</span> ПРОЦЕС</h2>
+                    <div class="lor-section-divider"></div>
+                    <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Наші уроки проходять з хорошим настроєм, а результат виходить позитивним завжди. </p>
+                </div>
+                <!-- Section Header End -->
+
+            </div>
+        </div>
+        <!-- Container End -->
+        <!-- Featured Works Slider -->
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+
+                <div class="lor-portfolio-work-slider-section wow fadeIn" data-wow-duration="2s">
+                    <div id="featured-work-slider" class="owl-carousel lor-portfolio-works-slider">
+
+                        <!-- Work 1 -->
+                        <div class="lor-portfolio-work-item">
+
+                            <img src="images/w1.JPG" alt="work">
+                            <div class="lor-port-work-details">
+                                <ul class="lor-work-meta">
+                                    <li class="lor-lighbox"><a href="images/w1.JPG" class="lor-featured-work-img"><i class="fa fa-search"></i></a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <!-- Work 1 End -->
+
+                        <!-- Work 2 -->
+                        <div class="lor-portfolio-work-item">
+
+                            <img src="images/w2.JPG" alt="work">
+                            <div class="lor-port-work-details">
+                                <ul class="lor-work-meta">
+                                    <li class="lor-lighbox"><a href="images/w2.JPG" class="lor-featured-work-img"><i class="fa fa-search"></i></a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <!-- Work 2 End -->
+
+                        <!-- Work 3 -->
+                        <div class="lor-portfolio-work-item">
+
+                            <img src="images/w3.JPG" alt="work">
+                            <div class="lor-port-work-details">
+                                <ul class="lor-work-meta">
+                                    <li class="lor-lighbox"><a href="images/w3.JPG" class="lor-featured-work-img"><i class="fa fa-search"></i></a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <!-- Work 3 End -->
+
+                        <!-- Work 4 -->
+                        <div class="lor-portfolio-work-item">
+
+                            <img src="images/w4.JPG" alt="work">
+                            <div class="lor-port-work-details">
+                                <ul class="lor-work-meta">
+                                    <li class="lor-lighbox"><a href="images/w4.JPG" class="lor-featured-work-img"><i class="fa fa-search"></i></a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <!-- Work 4 End -->
+                        
+                        <div class="lor-portfolio-work-item">
+
+                            <img src="images/w5.JPG" alt="work">
+                            <div class="lor-port-work-details">
+                                <ul class="lor-work-meta">
+                                    <li class="lor-lighbox"><a href="images/w5.JPG" class="lor-featured-work-img"><i class="fa fa-search"></i></a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        
+                         <div class="lor-portfolio-work-item">
+
+                            <img src="images/w6.JPG" alt="work">
+                            <div class="lor-port-work-details">
+                                <ul class="lor-work-meta">
+                                    <li class="lor-lighbox"><a href="images/w6.JPG" class="lor-featured-work-img"><i class="fa fa-search"></i></a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                         <div class="lor-portfolio-work-item">
+
+                            <img src="images/w7.JPG" alt="work">
+                            <div class="lor-port-work-details">
+                                <ul class="lor-work-meta">
+                                    <li class="lor-lighbox"><a href="images/w7.JPG" class="lor-featured-work-img"><i class="fa fa-search"></i></a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                         <div class="lor-portfolio-work-item">
+
+                            <img src="images/w8.JPG" alt="work">
+                            <div class="lor-port-work-details">
+                                <ul class="lor-work-meta">
+                                    <li class="lor-lighbox"><a href="images/w9.JPG" class="lor-featured-work-img"><i class="fa fa-search"></i></a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+
+                         <div class="lor-portfolio-work-item">
+
+                            <img src="images/w9.JPG" alt="work">
+                            <div class="lor-port-work-details">
+                                <ul class="lor-work-meta">
+                                    <li class="lor-lighbox"><a href="images/w8.JPG" class="lor-featured-work-img"><i class="fa fa-search"></i></a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        
+                        <!-- Work 7 End -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Featured Works Slider -->
+
+    </section>
+    <!-- Featured Work End -->
+
+
+
+    
+
+   
+    
+    <section id="calendar">
+        <div style="padding-bottom: 50px" class="container wow fadeInDown">
+            <div class="row lor-section-header">
+            <h2 style="padding-top: 120px" class="centered"><span class="lor-highlight-text">Програма курсу</span></h2>
+            <div class="lor-section-divider"></div>
+            <!--
+                <div style="padding-top: 30px" class="col-lg-6 col-sm-6 col-xs-12 centered">
+                    <i style="font-size: 350px" class="fa fa-calendar" aria-hidden="true"></i>
+                </div>
+            -->
+                <div style="padding-top: 30px" class="col-lg-12 col-sm-12 col-xs-12">
+                    <ul class="wow bounceInRight"  style="font-size: 17px">
+                        <li class="why_tg">1.  Знайомство. «Навіщо ходити в школу?» І як улюблений предмет може стати основою майбутньої професії. Що таке якісний networking? Навики комунікації та компетенції майбутнього.<br> <b>30.05.2017 – 12:00-15:00</b></li>
+                        <li class="why_tg">2. Завдання профорієнтації. Логіка вибору майбутньої професії. Зовнішні та внутрішні критерії вибору. Принципи вибору майбутньої професії. <br> <b>01.06.2017 - 12:00-15:00</b></li>
+                        <li class="why_tg">3. Аналіз ринку праці. Що таке багатокар'єрність? Коло професій / Світ професій / типи професій. Формула успіху. В якій сфері реалізувати себе? <br><b>06.06.2017 - 12:00-15:00</b></li>
+                        <li class="why_tg">4.  Вісім чинників вибору професії. Колесо як інструмент самовизначення і вибору. <br><b>14.06.2017 - 12:00-15:00</b></li>
+                        <li class="why_tg">5.  Як мрію перетворити в ціль? Як ставити цілі, що ведуть до успіху? Техніка SMART. <br><b>17.06.2017 - 12:00-15:00</b></li>
+                        <li class="why_tg">6.  Життя як проект. 4 питання планування. Розстановка пріоритетів. Чим мотивація відрізняється від дисципліни?<br><b>20.06.2017 - 12:00-15:00</b></li>
+                        <li class="why_tg">7.  Подорож із сьогодення в майбутнє. Піраміда логічних рівнів. <br><b>23.06.2017 - 12:00-15:00</b></li>
+                        <li class="why_tg">8.  Стратегія Уолта Діснея. Особистий план розвитку. <br><b>27.06.2017 - 12:00-15:00</b></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+ <!-- =============================
+            Testimonial Section
+    ================================== -->
+    <section id="testimonials" class="bgc-two lor-testimonial-section">
+
+
+        <div class="lor-parallax-overlay"></div>
+
+        <div class="lor-testimonial-wrapper wow bounceIn">
+            <div class="container">
+                <div class="row">
+                     <h2><span class="lor-highlight-text">ВІДГУКИ</span> БАТЬКІВ</h2>
+                    <!-- Testimonial Slider -->
+                    <div id="lor-testimonial" class="owl-carousel lor-testimonial">
+                    
+                        <!-- Slides -->
+                        <div class="lor-testimonial-slides col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
+                            <img src="images/img-testimonial/woman.png" alt="">
+                            <p>У Вари появились общие знания о возможной будущей деятельности, занятиях. Узнала о стратегии достижения цели. Постановке целей по SMART</p>
+                            <p class="lor-client-info">Елена, мама Вари</p>
+                        </div>
+                        <!-- Slides End -->
+
+                        <!-- Slides -->
+                        
+                        <!-- Slides End -->
+                         <div class="lor-testimonial-slides col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
+                            <img src="images/img-testimonial/woman.png" alt="">
+                            <p>Дети узнают много нового, задумываются о будущем, о выборе, о своих желаниях и целях.</p>
+                            <p class="lor-client-info">Ольга, мама Лео</p>
+                        </div>
+                        <!-- Slides -->
+                        <div class="lor-testimonial-slides col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
+                            <img src="images/img-testimonial/man.png" alt="">
+                            <p>Содержание (внутреннее наполнение) курса имеет гораздо больше значения для развития личности, чем можно понять из названия. Спасибо Вам за труд и знания, которые вы вкладываете в наших детей</p>
+                            <p class="lor-client-info">Александр, папа Андрея</p>
+                        </div>
+                        <!-- Slides End -->
+                            <div class="lor-testimonial-slides col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
+                            <img src="images/img-testimonial/woman.png" alt="">
+                            <p>Максим стал более ответственно относится к учебе. Стал увереннее в своих возможностях. Оценки Максима улучшились. Спасибо большое! Мы очень довольны результатами, курсы интересны ребенку и помогают родителям.</p>
+                            <p class="lor-client-info">Ольга, мама Максима</p>
+                        </div>
+                        <!-- Slides -->
+                        <div class="lor-testimonial-slides col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
+                            <img src="images/img-testimonial/woman.png" alt="">
+                            <p>Курс помогает подростку сделать выбор в каком направлении развиватся далее, какие предметы нужно усилить и помогает обрести мотивацию к учебе. Ребенок ходит с удовольствием, и он познает себя - а это самое важное в подростковом возрасте.</p>
+                            <p class="lor-client-info">Наталья, мама Андрея</p>
+                        </div>
+
+
+                        <div class="lor-testimonial-slides col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">
+                            <img src="images/img-testimonial/woman.png" alt="">
+                            <p>Сын с удовольствием посещал занятия, стал задумываться о будущем, много говорить с родителями, обсуждать возникшие вопросы по ходу тренинга. Впервые прозвучали осмысленные мысли о работе в будущем, о целях в жизни, приоритетах в выборе профессии. О Курсе хочу сказать, что это интересно, познавательно, результативно, сын полностью меняется на глазах, становится взрослее, больше думает об ответственности за свое будущее
+Мы полностью доверяем тренеру, думаем, что если детям интересно, то подход правильный. Очень интересные домашние задания.…Спасибо большое за позитив, вдохновение детей на созидание своего будущего!</p>
+                            <p class="lor-client-info">Марина, мама Димы 16 лет.</p>
+                        </div>
+                        <!-- Slides End -->
+
+                    </div>
+                    <!-- Testimonial Slider End -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonial End -->
+
+
+        <section id="couch">
+            <div class="container">
+                <div class="row">
+                    <div class="couch_info">
+                        <h2 class="centered wow fadeInDown"><span class="lor-highlight-text">Про автора</span></h2>
+                        <div class="lor-section-divider"></div>
+                         <h3 class="centered wow bounceIn">Світлана Бочківська</h3>
+                        <img class="wow bounceIn" src="images/couch.jpg" alt="Автор">
+
+                        <p style="font-size: 15px" class="wow bounceIn">Сертифікований коуч в області особистісного зростання і професійної орієнтації, кар'єрний коуч. Член Міжнародної Федерації коучингу ICF.<br><br>Автор і тренер Курсу професійного розвитку і самовизначення для підлітків <b>«Моя майбутня кар'єра»</b>. <br><br> Автор підтримуючої програми для батьків: <b>&quot;Якщо у вас  &quot;стався&quot; підліток. Коучинг для батьків&quot;</b>. <br> <br>   Пройшла професійну підготовку і навчання в <b> Iternational Erickson College</b>, а також<br> Курси підвищення кваліфікації <b> «Директор з персоналу»</b> Вищої школи управління. <br> <br> <i> «За моїми плечима довгий послужний список з досвідом роботи у великому іноземному банку, більше 10 років, з них понад 8 років на керівних посадах. Одне з моїх досягнень, яким  я відкрито пишаюся - це ефективна робота з персоналом. Будучи керівником відділення - вийшла в ТОП 5 кращих серед 200 відділень по показникам і сервісу в Україні. А займаючи керівну посаду в Head office - розробила та впровадила систему підтримки та адаптації персоналу, спрямовану на розвитку нових співробітників без досвіду роботи (студенти), які пройшли конкурсний відбір на вакантні посади. Більш того, створила і провела різні тренінги для співробітників банку. <br> <br> І це ще не все. Відрядження, масштабний проект по поліпшенню показників і сервісу, підбір і навчання персоналу, робота з мережею по всій Україні, контроль, виконання планових показників, організація роботи, мотивація та адаптація персоналу, проведення конкурсів серед відділень і ще багато іншої цікавої роботи, завдяки якій я отримала безцінний досвід ефективного керівника».</i></p>
+                    </div>
+                </div>
+                <div class="row certif_row wow fadeInDown">
+                    <div class="col-lg-4 col-sm-4 col-xs-12 centered certif">
+                        <img src="images/certif/1.jpg" alt="">
+                    </div>
+                    <div class="col-lg-4 col-sm-4 col-xs-12 centered certif ">
+                        <img src="images/certif/2.jpg" alt="">
+                    </div>
+                    <div class="col-lg-4 col-sm-4 col-xs-12 centered certif">
+                        <img src="images/certif/3.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    <!-- =============================
+                Contact Section
+    ================================== -->
+    <section id="contact" class="bgc-one lor-section-wrapper lor-contact-section" data-stellar-background-ratio="0.5">
+    <div class="lor-parallax-overlay"></div>
+        <div class="container">
+            <div class="row">
+
+                <!-- Section Header -->
+                <div class="col-md-12 col-sm-12 col-xs-12 lor-section-header wow fadeInDown lor-section-header-parallax">
+                    <h2><span class="lor-highlight-text">ЗАРЕЄСТРУВАТИСЬ</span></h2>
+                    <div class="lor-section-divider"></div>
+                    <p class="col-md-8 col-sm-10 col-xs-12 col-md-offset-2 col-sm-offset-1">Зареєструватись і уточнити ваші запитання можна заповнивши форму нижче.</p>
+                </div>
+                <!-- Section Header End -->
+
+                <div class="lor-contact-details">
+
+                    <!-- Address Area End -->
+
+                    <!-- Contact Form -->
+                    <div class="col-md-12 col-sm-12 col-xs-12 lor-contact-form wow bounceInRight">
+                        <div id="contact-result"></div>
+                        <div id="contact-form">
+                            <div class="lor-input-name lor-input-fields centered">
+                                <input type="text" name="name" id="name" placeholder="Ім'я">
+                            </div>
+                            <div class="lor-input-phone lor-input-fields centered">
+                                <input type="tel" name="phone" id="phone" placeholder="Номер телефону">
+                            </div>
+
+                            <div class="lor-input-email lor-input-fields centered">
+                                <input type="email" name="email" id="email" placeholder="Email">
+                            </div>
+
+                            <div class="lor-input-message lor-input-fields centered">
+                                <textarea name="message" id="message" cols="30" rows="10" placeholder="Повідомлення"></textarea>
+                                <div id="messageShow" class="error"></div>
+                            </div>
+                            <div class="centered">
+                            <input type="button" value="Надіслати" id="submit-btn">
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Contact Form End -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="thx" class="bgc-one lor-section-wrapper lor-contact-section" data-stellar-background-ratio="0.5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 col-xs-12">
+                    <h1 style="color: #ff1744" class="centered" >Вітаємо! Ви успішно зареєструвались на Курс! Ми зв'яжемось з Вами найближчим часом для уточнення деталей. Дякуємо!</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section End -->
+
+
+   <!-- =============================
+                Footer Section
+    ================================= -->
+    <footer>
+        <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-lg-offset-1 col-sm-6 col-sm-offset-1 col-xs-12">
+            <div class="row">
+            <ul>
+                <li>
+                <i class="fa fa-map-marker points" aria-hidden="true"></i>
+                <p style="text-transform: none"><b>Київ, вул. Артема, 77<br>Офіс <span style="font-family: 'Times New Roman'"">502</span></b></p>
+                </li>
+            </ul>
+            </div>
+            <div class="row">
+            <ul>
+                <li>
+                <i class="fa fa-phone points" aria-hidden="true"></i>
+                <p id="footer_phone"><b>+38 099 519 54 90</b></p>
+                </li>
+            </ul>
+            </div>
+            <div class="row">
+            <ul>
+                <li>
+                <i class="fa fa-envelope points" aria-hidden="true"></i>
+                <p id="footer_email"><b>сareer4teens@ukr.net</b></p>
+                </li>
+            </ul>
+            </div>
+            </div>
+            <div class="col-lg-5 col-lg-offset-1 col-sm-6 col-sm-offset-1 col-xs-12">
+                <h4 style="text-align: right; color: #fff">Світлана Бочківська<br> Автор та тренер Курсу, кар'єрний коуч ICF</h4>
+                <p style="text-transform: none; text-align: right">sb_coach@ukr.net</p>
+                <p style="text-transform: none; text-align: right"><a href="http://humans.com.ua/svetlana-bochkovskaja/">http://humans.com.ua/svetlana-bochkovskaja/</a></p>
+                <ul class="links_ul">
+                    <li class="float_left"><a href="https://www.facebook.com/bochkovskaya.coach"><i class="fa fa-facebook links" aria-hidden="true"></i></a></li>
+                    <li class="float_left"><a href="https://www.linkedin.com/in/svetlana-bochkovskaya-coach/"><i class="fa fa-linkedin links" aria-hidden="true"></i></a></li>
+                    <li class="float_left"><a href="https://vk.com/bochkovskaya.coach"><i class="fa fa-vk links" aria-hidden="true"></i></a></li>
+                </ul>
+
+            </div>
+        </div>
+           
+            <div class="row centered">
+                <p style="font-family: 'Times New Roman'; text-transform: none">© career4teens.com.ua. Все права защищены. 2017 | Политика конфиденциальности |  </p>
+            </div>
+             <div class="row">
+                <h5 class="developer" style="color: #D2D2D2">Сайт разработал: <a href="https://www.facebook.com/ValikMohis">Valentin Mogish</a></h5>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
+
+
+    <!-- =============================
+                SCRIPTS
+    ================================== -->
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/modernizr.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <script src="js/jquery.easypiechart.js"></script>
+    <script src="js/jquery.countTo.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/jflickrfeed.min.js"></script>
+    <script src="js/jquery.fitvids.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/jquery.nav.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/smooth-scroll.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.sliderPro.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/custom.js"></script>
+
+</body>
+</html>
